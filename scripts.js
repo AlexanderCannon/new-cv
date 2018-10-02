@@ -13,23 +13,24 @@ function debounce(func, wait = 10, immediate = false) {
 
 const header = document.querySelector("header");
 const content = document.querySelector(".content");
-const headings = document.querySelectorAll('.heading')
+const headings = document.querySelectorAll('.heading');
 
 const checkHeader = () => {
   if (
-    content.offsetTop - header.getBoundingClientRect().height - 50 <
+    content.offsetTop - header.getBoundingClientRect().height - 75 <
     window.pageYOffset
   ) {
     header.classList.add("active");
   } else {
     header.classList.remove("active");
+    header.childNodes[1].innerHTML =  header.childNodes[1].dataset.title;
   }
 };
 
 function checkSlide(e) {
   headings.forEach(heading => {
-    const { y, height, top } = heading.getBoundingClientRect()
-    if (window.scrollY >= y + top && window.scrollY <= y + top + height) {
+    const { y } = heading.getBoundingClientRect()
+    if (y < header.getBoundingClientRect().height) {
       header.childNodes[1].innerHTML = heading.dataset.title;
     }
   });
