@@ -13,10 +13,11 @@ function debounce(func, wait = 10, immediate = false) {
 
 const header = document.querySelector("header");
 const content = document.querySelector(".content");
+const headings = document.querySelectorAll('.heading')
 
 const checkHeader = () => {
   if (
-    content.offsetTop - header.getBoundingClientRect().height - 100 <
+    content.offsetTop - header.getBoundingClientRect().height - 50 <
     window.pageYOffset
   ) {
     header.classList.add("active");
@@ -25,6 +26,16 @@ const checkHeader = () => {
   }
 };
 
+function checkSlide(e) {
+  headings.forEach(heading => {
+    const { y, height, top } = heading.getBoundingClientRect()
+    if (window.scrollY >= y + top && window.scrollY <= y + top + height) {
+      header.childNodes[1].innerHTML = heading.dataset.title;
+    }
+  });
+}
+
 window.addEventListener("scroll", debounce(checkHeader));
+window.addEventListener("scroll", debounce(checkSlide), 20);
 
 checkHeader();
