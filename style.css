@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  color: white;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  padding: 0 2vw;
+  z-index: 100;
+}
+
+header.active {
+  background: black;
+  transition: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 25px;
+}
+
+#hero {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: absolute;
+  top: 65vh;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+svg path {
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 10;
+  stroke-dasharray: 4778;
+  stroke-dashoffset: 4778;
+  animation: draw 3s forwards infinite;
+}
+
+@keyframes draw {
+  50% {
+    stroke-dashoffset: 0;
+    stroke-width: 10;
+    fill-opacity: 0;
+  }
+  200% {
+    stroke-width: 0;
+    fill-opacity: 1;
+  }
+}
+
+a:link,
+a:visited,
+a:active {
+  color: white;
+}
+a:hover {
+  color: hotpink;
+}
