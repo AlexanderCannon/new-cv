@@ -11,9 +11,18 @@ function debounce(func, wait = 10, immediate = false) {
   };
 }
 
+function checkSlide() {
+  headings.forEach(heading => {
+    const { y } = heading.getBoundingClientRect();
+    if (y < header.getBoundingClientRect().height) {
+      header.childNodes[1].innerHTML = heading.dataset.title;
+    }
+  });
+}
+
 const header = document.querySelector("header");
 const content = document.querySelector(".content");
-const headings = document.querySelectorAll('.heading');
+const headings = document.querySelectorAll(".heading");
 
 const checkHeader = () => {
   if (
@@ -23,18 +32,9 @@ const checkHeader = () => {
     header.classList.add("active");
   } else {
     header.classList.remove("active");
-    header.childNodes[1].innerHTML =  header.childNodes[1].dataset.title;
+    header.childNodes[1].innerHTML = header.childNodes[1].dataset.title;
   }
 };
-
-function checkSlide(e) {
-  headings.forEach(heading => {
-    const { y } = heading.getBoundingClientRect()
-    if (y < header.getBoundingClientRect().height) {
-      header.childNodes[1].innerHTML = heading.dataset.title;
-    }
-  });
-}
 
 window.addEventListener("scroll", debounce(checkHeader));
 window.addEventListener("scroll", debounce(checkSlide), 20);

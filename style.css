@@ -5,15 +5,22 @@
 header {
   color: white;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100vw;
+  background:rgb(19, 19, 19);
   padding: 0 2vw;
   z-index: 100;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  transition: 1s;
+  width: auto;
+  border-radius: 0 0 10px 0;
 }
 
 header.active {
-  background: black;
-  transition: 0.3s;
+  padding-right: 50vw;
+}
+
+header h1 {
+  min-width: 75vw;
+  margin: 2vh 0;
 }
 
 body {
@@ -33,11 +40,13 @@ body {
 .content {
   position: absolute;
   top: 65vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   color: #f1f1f1;
   width: 100%;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 15vh;
+  margin-bottom: 30vh;
 }
 
 svg path {
